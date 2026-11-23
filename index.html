@@ -314,14 +314,14 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
 <section class="scale pad" id="scale">
   <div class="label fade"><span>The platform I build and run</span><span>By the numbers</span></div>
   <div class="sgrid">
-    <div class="fade"><b data-count="1960000" data-fmt="m">0</b><span>Page views a month</span></div>
-    <div class="fade"><b data-count="5160000" data-fmt="m">0</b><span>Requests a month</span></div>
-    <div class="fade"><b data-count="33254">0</b><span>Members</span></div>
-    <div class="fade"><b data-count="15862">0</b><span>Businesses listed</span></div>
-    <div class="fade"><b data-count="663">0</b><span>Websites on one codebase</span></div>
-    <div class="fade"><b data-count="105543">0</b><span>Blog posts</span></div>
+    <div class="fade"><b data-count="2" data-pre="~" data-suf="M">0</b><span>Page views a month</span></div>
+    <div class="fade"><b data-count="5" data-suf="M+">0</b><span>Requests a month</span></div>
+    <div class="fade"><b data-count="33" data-suf="k+">0</b><span>Members</span></div>
+    <div class="fade"><b data-count="15" data-suf="k+">0</b><span>Businesses listed</span></div>
+    <div class="fade"><b data-count="650" data-suf="+">0</b><span>Websites on one codebase</span></div>
+    <div class="fade"><b data-count="100" data-suf="k+">0</b><span>Blog posts</span></div>
   </div>
-  <p class="sfoot fade">Online since 2000 &nbsp;·&nbsp; 99.9% of requests served without a server error &nbsp;·&nbsp; 164 GB a month through Cloudflare &nbsp;·&nbsp; 115,000 pages in Google</p>
+  <p class="sfoot fade">Online since 2000 &nbsp;·&nbsp; 99.9% of requests served without a server error &nbsp;·&nbsp; 160+ GB a month through Cloudflare &nbsp;·&nbsp; 115k pages in Google</p>
 </section>
 
 <!-- NUMBERS -->
@@ -416,10 +416,10 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
     </article>
 
     <article class="wrow fade" data-k="ahablog">
-      <button class="whead" type="button" aria-expanded="false"><span class="n">05</span><h3>AhaBlog</h3><span class="sum">663 websites, one codebase.</span><span class="yr">Platform</span><span class="arr">+</span></button>
+      <button class="whead" type="button" aria-expanded="false"><span class="n">05</span><h3>AhaBlog</h3><span class="sum">650+ websites, one codebase.</span><span class="yr">Platform</span><span class="arr">+</span></button>
       <div class="wbody"><div class="winner">
         <div class="wtext">
-          <p>663 club, church and business websites, all running on one codebase, each with its own domain, look and admin, and 100,000+ blog posts between them and the portal.</p>
+          <p>650+ club, church and business websites, all running on one codebase, each with its own domain, look and admin, and 100,000+ blog posts between them and the portal.</p>
           <ul>
             <li><b>A new look for every community site:</b> admin-managed menus, event countdowns, home-page boards.</li>
             <li><b>Business templates edited right on the page:</b> sections on and off, inline text, a quote inbox.</li>
@@ -580,7 +580,7 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
   const cio = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return; cio.unobserve(e.target);
     const el = e.target, to = +el.dataset.count, suf = el.dataset.suf || '', t0 = performance.now(), d = still ? 0 : 1600;
-    const step = t => { const k = d ? Math.min(1, (t - t0) / d) : 1; const v = to * (1 - Math.pow(1 - k, 4)); el.textContent = el.dataset.fmt === 'm' ? (v / 1e6).toFixed(2) + 'M' : Math.round(v).toLocaleString('en-US') + suf; if (k < 1) requestAnimationFrame(step); };
+    const step = t => { const k = d ? Math.min(1, (t - t0) / d) : 1; const v = to * (1 - Math.pow(1 - k, 4)); el.textContent = (el.dataset.pre || '') + Math.round(v).toLocaleString('en-US') + suf; if (k < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
   }), { threshold: .6 });
   $$('[data-count]').forEach(e => cio.observe(e));
