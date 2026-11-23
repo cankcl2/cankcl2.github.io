@@ -100,7 +100,7 @@ body.past .hud-band { opacity: 1; }
 .meta { position: relative; z-index: 2; width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: clamp(12px, 3vh, 30px); text-align: left; font-weight: 700; pointer-events: none; }
 .meta div:nth-child(3) { display: flex; gap: 10px; align-items: baseline; font-size: 18px; }
 .meta div:nth-child(3)::before { content: ''; width: 15px; height: 15px; background: var(--ink); flex: none; }
-.hero .hint { position: absolute; z-index: 2; bottom: 13%; left: 50%; transform: translateX(-50%); color: var(--faint); font-size: 11px; pointer-events: none; transition: opacity .6s; }
+.hero .hint { position: absolute; z-index: 2; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--faint); font-size: 11px; pointer-events: none; transition: opacity .6s; }
 
 /* line-by-line reveal */
 .ln { display: block; overflow: hidden; }
@@ -674,11 +674,18 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
     // the text "872" drawn on a small canvas, then sampled: where it is ink, a point lives
     const c = document.createElement('canvas'), x = c.getContext('2d');
     c.width = W; c.height = H;
-    const size = Math.min(W * (W < 700 ? .5 : .32), H * .42);
-    x.fillStyle = '#fff'; x.textAlign = 'center'; x.textBaseline = 'middle';
+    // the number sits in the free space under the name row (#meta), never over it, on any screen height
+    const heroTop = hero.getBoundingClientRect().top, metaEl = document.getElementById('meta');
+    const top = metaEl ? metaEl.getBoundingClientRect().bottom - heroTop + 26 : H * .5;
+    const bottom = H - Math.max(70, H * .08), room = Math.max(120, bottom - top);
+    x.fillStyle = '#fff'; x.textAlign = 'center'; x.textBaseline = 'alphabetic';
+    let size = Math.min(W * (W < 700 ? .5 : .32), 600);
     x.font = '400 ' + size + 'px "Instrument Serif", serif';
+    let m = x.measureText('872'), gh = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
+    if (gh > room) { size *= room / gh; x.font = '400 ' + size + 'px "Instrument Serif", serif'; m = x.measureText('872'); gh = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent; }
     x.lineWidth = size * .045; x.strokeStyle = '#fff'; x.lineJoin = 'round';
-    const cy = H * (W < 700 ? .7 : .72); x.fillText('872', W / 2, cy); x.strokeText('872', W / 2, cy);
+    const base = top + (room - gh) / 2 + m.actualBoundingBoxAscent;
+    x.fillText('872', W / 2, base); x.strokeText('872', W / 2, base);
     const data = x.getImageData(0, 0, W, H).data, out = [], step = W < 700 ? 4 : 3;
     for (let y = 0; y < H; y += step) for (let xx = 0; xx < W; xx += step) if (data[(y * W + xx) * 4 + 3] > 140) out.push(xx + (Math.random() - .5) * step, y + (Math.random() - .5) * step);
     return out;
