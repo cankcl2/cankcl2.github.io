@@ -211,6 +211,9 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
 .heat .c[data-l="1"] { background: rgba(243,241,236,.28); } .heat .c[data-l="2"] { background: rgba(243,241,236,.5); }
 .heat .c[data-l="3"] { background: rgba(243,241,236,.78); } .heat .c[data-l="4"] { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
 .heat .x { visibility: hidden; }
+.heat-key { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 22px; color: var(--faint); font-weight: 700; font-size: 11px; }
+.heat-key i { width: 90px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, rgb(150,148,146), rgb(244,184,96)); }
+.heat-key i.hot { background: linear-gradient(90deg, rgb(244,184,96), rgb(178,30,36)); box-shadow: 0 0 8px rgba(178,30,36,.6); }
 .act-foot { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 26px; color: var(--dim); font-weight: 700; }
 .act-foot b { color: var(--ink); }
 .tip { position: fixed; z-index: 30; pointer-events: none; background: var(--ink); color: var(--bg1); font-weight: 700; padding: 5px 9px; opacity: 0; transform: translate(-50%, -140%); white-space: nowrap; transition: opacity .15s; }
@@ -457,6 +460,7 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
 <section class="act pad" id="activity">
   <div class="label fade"><span>Activity · every dot is a day</span><span>Jul → Nov 2026</span></div>
   <div class="heat-scroll"><div class="heat" id="heat"></div></div>
+  <div class="heat-key"><span>1</span><i></i><span>15</span><i class="hot"></i><span>45+ commits a day</span></div>
   <div class="act-foot" id="actFoot"></div>
 </section>
 
@@ -637,12 +641,17 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
   start.setDate(start.getDate() - ((start.getDay() + 6) % 7));
   const key = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
   const lvl = n => !n ? 0 : n < 3 ? 1 : n < 7 ? 2 : n < 14 ? 3 : 4;
+  // 1 commit: grey; 15: amber; 45 and more: deep red - a smooth blend between them
+  const GREY = [150, 148, 146], AMBER = [244, 184, 96], RED = [178, 30, 36];
+  const mix = (a, b, t) => 'rgb(' + a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',') + ')';
+  const heatColor = n => n <= 15 ? mix(GREY, AMBER, (n - 1) / 14) : mix(AMBER, RED, Math.min(1, (n - 15) / 30));
   let col = 0, active = 0, total = 0, best = ['', 0];
   for (let d = new Date(start); d <= end; col++) {
     const m = document.createElement('div'); m.className = 'm'; if (d.getDate() <= 7) m.textContent = d.toLocaleString('en', { month: 'short' }); heat.appendChild(m);
     for (let r = 0; r < 7; r++, d.setDate(d.getDate() + 1)) {
       const c = document.createElement('div'), n = DAYS[key(d)] || 0;
       c.className = 'c' + (d < new Date(2026, 6, 1) || d > end ? ' x' : ''); c.dataset.l = lvl(n);
+      if (n) { const col = heatColor(n); c.style.background = col; if (n >= 8) c.style.boxShadow = '0 0 ' + Math.min(14, 4 + n / 4) + 'px ' + col; }
       c.dataset.t = d.toLocaleDateString('en', { month: 'short', day: 'numeric' }) + ' · ' + (n ? n + ' commit' + (n > 1 ? 's' : '') : 'no commits');
       c.style.transitionDelay = (col * 22 + r * 8) + 'ms';
       if (n) { active++; total += n; if (n > best[1]) best = [c.dataset.t.split(' · ')[0], n]; }
