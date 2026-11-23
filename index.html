@@ -129,7 +129,10 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
 .sgrid div:nth-child(3n + 1) { border-left: 0; padding-left: 0; }
 .sgrid b { font: 400 clamp(54px, 7.4vw, 124px)/.88 var(--serif); letter-spacing: -.02em; text-transform: none; background: linear-gradient(120deg, var(--ink) 30%, var(--accent) 75%, #e76f51); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .sgrid span { color: var(--dim); font-weight: 700; }
-.sfoot { margin: 26px 0 0; color: var(--faint); font-weight: 700; line-height: 1.8; }
+.sfoot { margin: 30px 0 0; display: flex; flex-wrap: wrap; gap: 12px 34px; color: var(--ink); font-weight: 700; font-size: 14px; letter-spacing: .04em; }
+.sfoot span { display: inline-flex; align-items: center; gap: 10px; }
+.sfoot span::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); flex: none; }
+.sfoot b { color: var(--accent); font-weight: 700; }
 @media (max-width: 900px) { .sgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sgrid div:nth-child(3n + 1) { border-left: 1px solid var(--line); padding-left: 24px; } .sgrid div:nth-child(2n + 1) { border-left: 0; padding-left: 0; } }
 .nums { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--line); }
 .nums div { padding: 34px 24px; border-left: 1px solid var(--line); display: grid; gap: 12px; }
@@ -322,7 +325,7 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
     <div class="fade"><b data-count="650" data-suf="+">0</b><span>Websites on one codebase</span></div>
     <div class="fade"><b data-count="100" data-suf="k+">0</b><span>Blog posts</span></div>
   </div>
-  <p class="sfoot fade">Online since 2000 &nbsp;·&nbsp; 99.9% of requests served without a server error &nbsp;·&nbsp; 160+ GB a month through Cloudflare &nbsp;·&nbsp; 115k pages in Google</p>
+  <div class="sfoot fade"><span><b>Online since 2000</b></span><span><b>99.9%</b> of requests served without a server error</span><span><b>160+ GB</b> a month through Cloudflare</span><span><b>115k</b> pages in Google</span></div>
 </section>
 
 <!-- NUMBERS -->
