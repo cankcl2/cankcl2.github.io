@@ -292,7 +292,7 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
   <a class="btn-c" href="#contact">Contact</a>
 </div>
 <div class="hud hud-bl"><a class="down" href="#about" aria-label="Scroll down"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 14l7 7 7-7" /></svg></a><span>Web, mobile and AI, shipped every day: built to be used.</span></div>
-<div class="hud hud-br"><div><span class="dot"></span>Toronto · <span id="clock">--:--</span></div><div style="color:var(--dim)">954 commits since June 2026</div></div>
+<div class="hud hud-br"><div><span class="dot"></span>Toronto · <span id="clock">--:--</span></div><div style="color:var(--dim)">984 commits since June 2026</div></div>
 <i class="corner l"></i><i class="corner r"></i>
 <div class="tip" id="tip"></div>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -338,7 +338,7 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
 
 <!-- NUMBERS -->
 <section class="nums pad rv" style="padding-left:0;padding-right:0">
-  <div class="fade"><b data-count="954">0</b><span>Commits since June 2026</span></div>
+  <div class="fade"><b data-count="984">0</b><span>Commits since June 2026</span></div>
   <div class="fade"><b data-count="6">0</b><span>Live products &amp; sites</span></div>
   <div class="fade"><b data-count="5" data-suf=" wks">0</b><span>App, first commit → both stores</span></div>
   <div class="fade"><b data-count="115" data-suf="k">0</b><span>Pages indexed by Google, from 40k</span></div>
@@ -486,7 +486,7 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
 
 <!-- INDEPENDENT APPS: my own products, apart from the work above -->
 <section class="apps pad" id="apps">
-  <div class="label fade"><span>Independent apps · my own products</span><span>(02)</span></div>
+  <div class="label fade"><span>Independent apps · my own products</span><span>(03)</span></div>
   <div class="rows">
 
     <article class="wrow fade" data-k="cluewise">
@@ -525,6 +525,26 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
           <div><a class="visit" href="https://cankcl2.github.io/leftwise-site/" target="_blank" rel="noopener">Visit Leftwise ↗</a><span class="visit soon">App Store · Google Play: coming soon</span></div>
         </div>
         <div class="wgal one"><div class="shot"><img src="img/full2-leftwise.webp" alt="The Leftwise product page" loading="lazy" /></div></div>
+      </div></div>
+    </article>
+
+    <article class="wrow fade" data-k="roomwise">
+      <button class="whead" type="button" aria-expanded="false"><span class="n">C</span><h3>RoomWise</h3><span class="sum">Know your room. Skip the penalty.</span><span class="yr">iOS · Android</span><span class="arr">+</span></button>
+      <div class="wbody"><div class="winner">
+        <div class="wtext">
+          <p>My own app for Canadians: it tracks TFSA, RRSP and FHSA contribution room across every bank and warns before a contribution would go over the limit, so CRA's 1% a month tax on the excess never starts. In English and French. Coming soon to the App Store and Google Play.</p>
+          <ul>
+            <li><b>A warning before saving:</b> type an amount and it shows how far over it would go, what CRA would charge each month and how much still fits; it also catches edits and deletes that bring an excess back.</li>
+            <li><b>CRA's rules for all three accounts:</b> TFSA withdrawals that come back on January 1, the RRSP $2,000 cushion and deadline, the FHSA's yearly, carry-forward and $40,000 lifetime limits.</li>
+            <li><b>Household:</b> a partner's room beside one's own, on one screen.</li>
+            <li><b>A payment calendar</b> for benefit days and tax deadlines, with reminders the phone schedules itself.</li>
+            <li><b>Private by design:</b> no account, no bank login, no server, no analytics; SQLite on the phone, a fingerprint or Face ID lock, and backups and CSV export the user controls.</li>
+            <li><b>Bilingual and accessible:</b> English and French (CELI, REER, CELIAPP), light and dark, screen-reader labels and contrast-checked colours.</li>
+          </ul>
+          <div class="wtags"><span>React Native</span><span>Expo SDK 58</span><span>TypeScript</span><span>SQLite</span><span>Local notifications</span><span>i18n EN · FR</span></div>
+          <div><a class="visit" href="https://cankcl2.github.io/roomwise-site/" target="_blank" rel="noopener">Visit RoomWise ↗</a><span class="visit soon">App Store · Google Play: coming soon</span></div>
+        </div>
+        <div class="wgal one"><div class="shot"><img src="img/full2-roomwise.webp" alt="The RoomWise product page" loading="lazy" /></div></div>
       </div></div>
     </article>
 
@@ -719,7 +739,7 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
   });
 
   // ---- activity dots: real commit dates (dates and counts only)
-  const DAYS = {"2026-07-07":2,"2026-07-08":2,"2026-07-09":2,"2026-07-13":2,"2026-07-14":3,"2026-07-15":3,"2026-07-16":2,"2026-07-17":2,"2026-07-21":2,"2026-07-22":5,"2026-07-23":2,"2026-07-24":3,"2026-07-27":7,"2026-07-28":3,"2026-07-29":1,"2026-07-30":19,"2026-07-31":21,"2026-08-04":10,"2026-08-05":9,"2026-08-06":7,"2026-08-07":7,"2026-08-10":8,"2026-08-11":6,"2026-08-12":4,"2026-08-13":4,"2026-08-14":6,"2026-08-17":8,"2026-08-19":13,"2026-08-21":3,"2026-08-23":1,"2026-08-24":1,"2026-08-25":6,"2026-08-28":16,"2026-08-31":7,"2026-09-02":8,"2026-09-03":1,"2026-09-04":16,"2026-09-07":8,"2026-09-08":11,"2026-09-10":7,"2026-09-11":3,"2026-09-14":1,"2026-09-15":7,"2026-09-16":9,"2026-09-17":6,"2026-09-21":10,"2026-09-22":1,"2026-09-23":5,"2026-09-24":17,"2026-09-25":13,"2026-09-28":6,"2026-09-29":8,"2026-09-30":14,"2026-10-01":15,"2026-10-02":9,"2026-10-05":10,"2026-10-06":6,"2026-10-07":2,"2026-10-08":19,"2026-10-09":6,"2026-10-13":3,"2026-10-14":17,"2026-10-15":2,"2026-10-16":35,"2026-10-19":16,"2026-10-20":30,"2026-10-21":28,"2026-10-22":59,"2026-10-23":40,"2026-10-26":13,"2026-10-27":42,"2026-10-29":7,"2026-10-30":11,"2026-11-02":22,"2026-11-03":37,"2026-11-04":9,"2026-11-05":24,"2026-11-06":18,"2026-11-09":7,"2026-11-10":12,"2026-11-11":4,"2026-11-12":6,"2026-11-13":11,"2026-11-16":12,"2026-11-19":7,"2026-11-20":4,"2026-11-23":2,"2026-11-24":12,"2026-11-25":22,"2026-11-26":27};
+  const DAYS = {"2026-07-07":2,"2026-07-08":2,"2026-07-09":2,"2026-07-13":2,"2026-07-14":3,"2026-07-15":3,"2026-07-16":2,"2026-07-17":2,"2026-07-21":2,"2026-07-22":5,"2026-07-23":2,"2026-07-24":3,"2026-07-27":7,"2026-07-28":3,"2026-07-29":1,"2026-07-30":19,"2026-07-31":21,"2026-08-04":10,"2026-08-05":9,"2026-08-06":7,"2026-08-07":7,"2026-08-10":8,"2026-08-11":6,"2026-08-12":4,"2026-08-13":4,"2026-08-14":6,"2026-08-17":8,"2026-08-19":13,"2026-08-21":3,"2026-08-23":1,"2026-08-24":1,"2026-08-25":6,"2026-08-28":16,"2026-08-31":7,"2026-09-02":8,"2026-09-03":1,"2026-09-04":16,"2026-09-07":8,"2026-09-08":11,"2026-09-10":7,"2026-09-11":3,"2026-09-14":1,"2026-09-15":7,"2026-09-16":9,"2026-09-17":6,"2026-09-21":10,"2026-09-22":1,"2026-09-23":5,"2026-09-24":17,"2026-09-25":13,"2026-09-28":6,"2026-09-29":8,"2026-09-30":14,"2026-10-01":15,"2026-10-02":9,"2026-10-05":10,"2026-10-06":6,"2026-10-07":2,"2026-10-08":19,"2026-10-09":6,"2026-10-13":3,"2026-10-14":17,"2026-10-15":2,"2026-10-16":35,"2026-10-19":16,"2026-10-20":30,"2026-10-21":28,"2026-10-22":59,"2026-10-23":40,"2026-10-26":13,"2026-10-27":42,"2026-10-29":7,"2026-10-30":11,"2026-11-02":22,"2026-11-03":37,"2026-11-04":9,"2026-11-05":24,"2026-11-06":18,"2026-11-09":7,"2026-11-10":12,"2026-11-11":4,"2026-11-12":6,"2026-11-13":11,"2026-11-16":12,"2026-11-19":7,"2026-11-20":4,"2026-11-23":2,"2026-11-24":12,"2026-11-25":22,"2026-11-26":47,"2026-11-27":10};
   const heat = $('#heat'), start = new Date(2026, 6, 1), end = new Date(2026, 10, 30);
   start.setDate(start.getDate() - ((start.getDay() + 6) % 7));
   const key = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
@@ -747,7 +767,7 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
   heat.addEventListener('mousemove', e => { const c = e.target.closest('.c:not(.x)'); if (!c) { tip.style.opacity = 0; return; } tip.textContent = c.dataset.t; const r = c.getBoundingClientRect(); tip.style.left = r.left + r.width / 2 + 'px'; tip.style.top = r.top + 'px'; tip.style.opacity = 1; });
   heat.addEventListener('mouseleave', () => tip.style.opacity = 0);
 
-  // ---- the dust: thousands of points that settle into "954", scatter from the mouse, drift away on scroll.
+  // ---- the dust: thousands of points that settle into "984", scatter from the mouse, drift away on scroll.
   // Plain WebGL (no library): positions on the CPU, one draw call of round, softly glowing points.
   const cv = $('#dust'), hero = $('.hero');
   const gl = cv.getContext('webgl', { antialias: false, alpha: true, premultipliedAlpha: false });
@@ -763,7 +783,7 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
 
   let W = 0, H = 0, N = 0, pos, vel, tgt, attr, mx = -1e4, my = -1e4, scrollK = 0, running = false, visible = true;
   function targets() {
-    // the text "954" drawn on a small canvas, then sampled: where it is ink, a point lives
+    // the text "984" drawn on a small canvas, then sampled: where it is ink, a point lives
     const c = document.createElement('canvas'), x = c.getContext('2d');
     c.width = W; c.height = H;
     // the number sits in the free space under the name row (#meta), never over it, on any screen height
@@ -773,11 +793,11 @@ body.past .hud-bl, body.past .hud-br, body.past .corner { opacity: 0; pointer-ev
     x.fillStyle = '#fff'; x.textAlign = 'center'; x.textBaseline = 'alphabetic';
     let size = Math.min(W * (W < 700 ? .5 : .32), 600);
     x.font = '400 ' + size + 'px "Instrument Serif", serif';
-    let m = x.measureText('954'), gh = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
-    if (gh > room) { size *= room / gh; x.font = '400 ' + size + 'px "Instrument Serif", serif'; m = x.measureText('954'); gh = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent; }
+    let m = x.measureText('984'), gh = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
+    if (gh > room) { size *= room / gh; x.font = '400 ' + size + 'px "Instrument Serif", serif'; m = x.measureText('984'); gh = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent; }
     x.lineWidth = size * .045; x.strokeStyle = '#fff'; x.lineJoin = 'round';
     const base = top + (room - gh) / 2 + m.actualBoundingBoxAscent;
-    x.fillText('954', W / 2, base); x.strokeText('954', W / 2, base);
+    x.fillText('984', W / 2, base); x.strokeText('984', W / 2, base);
     const data = x.getImageData(0, 0, W, H).data, out = [], step = W < 700 ? 4 : 3;
     for (let y = 0; y < H; y += step) for (let xx = 0; xx < W; xx += step) if (data[(y * W + xx) * 4 + 3] > 140) out.push(xx + (Math.random() - .5) * step, y + (Math.random() - .5) * step);
     return out;
